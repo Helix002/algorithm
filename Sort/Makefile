@@ -1,4 +1,4 @@
-CFLAGS=-g
+CFLAGS=-g -std=c99
 CC=gcc
 
 PROG=sort
