@@ -1,3 +1,6 @@
+#ifndef  SORT_H
+#define  SORT_H
+
 #include <stdlib.h>
 #include <stdbool.h>
 
@@ -17,3 +20,5 @@ void quick(int array[], int size);
 
 
 void count(int array[], int size);
+
+#endif
