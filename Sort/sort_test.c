@@ -1,7 +1,8 @@
-#include <stdio.h>
-
 #include "minunit.h"
-#include "sort.h"
+#include "sort_c.h"
+#include "sort_cxx_wrapper.h"
+
+#include <stdio.h>
 
 void (*sort)(int*, int);
 void (*sort_arr[])(int*, int) = {
@@ -13,8 +14,8 @@ void (*sort_arr[])(int*, int) = {
     quick,
     NULL,    // heap
     count,
-    NULL,    // bucket
-    NULL     // radix
+    bucket,
+    radix 
 };
 
 static int array_compare(int src[], int dst[], int size)
@@ -24,7 +25,6 @@ static int array_compare(int src[], int dst[], int size)
             return -1;
         }
     }
-
     return 0;
 }
 
@@ -113,7 +113,7 @@ static char *all_tests() {
 
 static char *single_tests() {
 
-    sort = count;
+    sort = radix;
     mu_run_test(test_case_1);
     mu_run_test(test_case_2);
     mu_run_test(test_case_3);
