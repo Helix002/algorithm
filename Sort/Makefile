@@ -17,4 +17,4 @@ sort_shared:
 	gcc -g 		           						-o  sort	libsort_cxx_wrapper.so sort_c.o sort_test.o
 
 clean:
-	rm -f *.o *.so *.exe
+	rm -f *.o *.so *.exe $(PROG)
