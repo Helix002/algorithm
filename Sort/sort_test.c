@@ -12,7 +12,7 @@ void (*sort_arr[])(int*, int) = {
     shell,
     merge,
     quick,
-    NULL,    // heap
+    heap,
     count,
     bucket,
     radix 
@@ -113,7 +113,7 @@ static char *all_tests() {
 
 static char *single_tests() {
 
-    sort = radix;
+    sort = heap;
     mu_run_test(test_case_1);
     mu_run_test(test_case_2);
     mu_run_test(test_case_3);

@@ -17,6 +17,7 @@ void merge(int array[], int size);
 
 void quick(int array[], int size);
 
+void heap(int array[], int size);
 
 
 void count(int array[], int size);

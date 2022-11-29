@@ -167,8 +167,51 @@ void quick(int array[], int size)
     quick_divide(array, 0, size - 1);
 }
 
+static void sink(int array[], int index, int size)
+{
+    int left_child = (index << 1) + 1;
+    int right_child = (index << 1) + 2;
+    int cur = index;
 
+    if (left_child < size && array[left_child] > array[cur]) {
+        cur = left_child;
+    }
 
+    if (right_child < size && array[right_child] > array[cur]) {
+        cur = right_child;
+    }
+
+    if (cur != index) {
+        int temp = array[cur];
+        array[cur] = array[index];
+        array[index] = temp;
+
+        sink(array, cur, size);
+    }
+
+}
+
+static void build_heap(int array[], int size)
+{
+    /* 自倒数第二层向上构建 */
+    for (int i = size / 2; i >= 0; --i) {
+        sink(array, i, size);
+    }
+}
+
+void heap(int array[], int size)
+{
+    build_heap(array, size);
+
+    for (int i = size - 1; i > 0; --i) {
+        int temp = array[0];
+        array[0] = array[i];
+        array[i] = temp;
+
+        size--;
+        sink(array, 0, size); /* 自顶向下维护 */
+    }
+}
 
 void count(int array[], int size)
 {
