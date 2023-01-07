@@ -1,0 +1,32 @@
+edge { start: south; end: north; minlen: 8;}
+graph { flow: right; }
+
+[ A ]  { label: sort_test; rows: 3; columns: 6;}
+[ B1 ] { label: wrapper to c; }
+[ B2 ] { label: c++ interface; columns: 3;}
+[ C ]  { label: c interface; columns: 3; offset: 2, 0; origin:B2; }
+[ D ]  { label: minunit; offset: -2, 0; origin: A; }
+
+[ B2 ] --> [ B1 ]
+[ B1 ] --> [ A ]
+[ C ] -->  [ A ]
+[ D ] --> { start: east; end: west;} [ A ]
+
+(c++ interface
+    [ sort_cxx.cpp ] { offset: -2, 0; origin: B2; }
+    [ sort_cxx.hpp ] { offset: -2,-2; origin: B2; }
+
+) { labelpos: top; }
+
+
+(c interface
+    [ sort_c.c ] { offset: 3, 0; origin: C; }
+    [ sort_c.h ] { offset: 3,-2; origin: C; }
+){ labelpos: top;}
+
+
+(wrapper to c
+    [ sort_cxx_wrapper.c ] { offset: -2, 0; origin: B1; }
+    [ sort_cxx_wrapper.h ] { offset: -2,-1; origin: B1; }
+){ labelpos: top;}
+
